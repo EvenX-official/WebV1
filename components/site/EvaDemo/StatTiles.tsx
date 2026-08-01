@@ -75,7 +75,7 @@ function Tile({
         <Icon className="h-3 w-3" />
         <span className="text-[10px] font-semibold uppercase tracking-wide">{label}</span>
       </div>
-      <div className="mt-1 text-[15px] md:text-[16px] font-semibold text-content-strong tabular-nums whitespace-nowrap overflow-hidden">
+      <div className="mt-1 text-[18px] font-semibold text-content-strong tabular-nums whitespace-nowrap">
         {value}
       </div>
       <div className={`mt-0.5 text-[10px] ${hintColor}`}>{hint}</div>
@@ -91,7 +91,7 @@ export function StatTiles({
   reduced: boolean;
 }) {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
+    <div className="grid grid-cols-2 md:grid-cols-[1.35fr_1fr_1fr_1fr] gap-2.5">
       <Tile
         icon={Wallet}
         label="Budget"
