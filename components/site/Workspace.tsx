@@ -24,7 +24,7 @@ const TABS = [
 type TabId = (typeof TABS)[number]["id"];
 
 /** How long each panel stays before advancing to the next. */
-const AUTO_MS = 4200;
+const AUTO_MS = 2600;
 /** How long to pause auto-cycling after the user manually clicks a tab. */
 const USER_PAUSE_MS = 12000;
 
