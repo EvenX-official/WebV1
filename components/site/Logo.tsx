@@ -10,7 +10,7 @@ export function Logo({ className = "" }: { className?: string }) {
           strokeLinecap="round"
         />
       </svg>
-      <span className="text-[17px] font-semibold tracking-tight text-content-strong">
+      <span className="font-display text-[17px] font-semibold tracking-tight text-content-strong">
         Even<span className="text-brand-blue">X</span>
       </span>
     </div>

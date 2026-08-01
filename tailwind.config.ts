@@ -55,7 +55,12 @@ export default {
       },
       fontFamily: {
         sans: ["var(--font-inter)", "ui-sans-serif", "system-ui"],
-        display: ["var(--font-inter)", "ui-sans-serif", "system-ui"],
+        display: [
+          "Satoshi",
+          "var(--font-inter)",
+          "ui-sans-serif",
+          "system-ui",
+        ],
       },
       letterSpacing: {
         tightest: "-0.045em",
