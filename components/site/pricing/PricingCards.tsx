@@ -95,7 +95,7 @@ const PLANS: Plan[] = [
     ],
     features: [
       "Up to 25 team members",
-      "Unlimited events",
+      "Up to 15 active events",
       "Advanced workflows and automation",
       "Full vendor lifecycle management",
       "Budget controls and variance tracking",
@@ -167,7 +167,7 @@ export function PricingCards() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.45, ease: EASE, delay: i * 0.05 }}
             className={cn(
-              "relative flex flex-col rounded-2xl border bg-white overflow-hidden",
+              "relative flex flex-col rounded-2xl border bg-white",
               p.featured
                 ? "border-brand-blue/30 shadow-card-lg lg:-my-3"
                 : "border-surface-border shadow-card",
