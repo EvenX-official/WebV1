@@ -4,8 +4,9 @@ import { useEffect, useRef, useState } from "react";
 
 /**
  * Drives the hero demo's beat-by-beat state.
- * Each beat's `at` is milliseconds from the start of the sequence.
- * When a `beat` value >= step.at, that step is considered active.
+ * Each beat's `at` is milliseconds from the start of a run.
+ * When at or past a beat, that beat is considered active.
+ * When the last beat finishes, the run pauses briefly then loops.
  */
 export type Beat =
   | "idle"
@@ -21,31 +22,39 @@ export type Beat =
 
 const SCHEDULE: { beat: Beat; at: number }[] = [
   { beat: "idle", at: 0 },
-  { beat: "typing", at: 200 },
-  { beat: "analysing", at: 2200 },
-  { beat: "structure", at: 2900 },
-  { beat: "timeline", at: 3600 },
-  { beat: "budget", at: 4300 },
-  { beat: "tasks", at: 5000 },
-  { beat: "vendors", at: 5900 },
-  { beat: "risks", at: 6700 },
-  { beat: "ready", at: 7500 },
+  { beat: "typing", at: 250 },
+  { beat: "analysing", at: 2600 },
+  { beat: "structure", at: 3400 },
+  { beat: "timeline", at: 4200 },
+  { beat: "budget", at: 5100 },
+  { beat: "tasks", at: 6000 },
+  { beat: "vendors", at: 7000 },
+  { beat: "risks", at: 7900 },
+  { beat: "ready", at: 8800 },
 ];
+
+/** Time held on the final "ready" state before the sequence resets. */
+const HOLD_MS = 4200;
+/** Fade-out gap after HOLD; also the moment `beat` returns to `idle`. */
+const RESET_MS = 450;
 
 const ORDER: Beat[] = SCHEDULE.map((s) => s.beat);
 const rank = (b: Beat) => ORDER.indexOf(b);
 
-/** Returns true once we're at or past `b` in the sequence. */
 export function useSequence({
   reduced,
   playKey,
+  loop = true,
 }: {
   reduced: boolean;
   playKey: number;
+  loop?: boolean;
 }) {
   const [beat, setBeat] = useState<Beat>(reduced ? "ready" : "idle");
   const startedAt = useRef<number>(0);
   const rafId = useRef<number | null>(null);
+  const timeoutId = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [runKey, setRunKey] = useState(0);
 
   useEffect(() => {
     if (reduced) {
@@ -55,22 +64,32 @@ export function useSequence({
     setBeat("idle");
     startedAt.current = performance.now();
 
+    const end = SCHEDULE[SCHEDULE.length - 1].at;
+
     const tick = () => {
       const elapsed = performance.now() - startedAt.current;
-      // pick the latest scheduled beat that has fired
       let current: Beat = "idle";
       for (const s of SCHEDULE) if (elapsed >= s.at) current = s.beat;
       setBeat((prev) => (prev === current ? prev : current));
-      if (elapsed < SCHEDULE[SCHEDULE.length - 1].at + 100) {
+      if (elapsed < end + 50) {
         rafId.current = requestAnimationFrame(tick);
+      } else if (loop) {
+        // hold the ready state, then reset to idle (fades everything out),
+        // then start a new run after a short pause.
+        timeoutId.current = setTimeout(() => {
+          setBeat("idle");
+          timeoutId.current = setTimeout(() => setRunKey((k) => k + 1), RESET_MS);
+        }, HOLD_MS);
       }
     };
     rafId.current = requestAnimationFrame(tick);
+
     return () => {
       if (rafId.current) cancelAnimationFrame(rafId.current);
+      if (timeoutId.current) clearTimeout(timeoutId.current);
     };
-  }, [reduced, playKey]);
+  }, [reduced, playKey, runKey, loop]);
 
   const at = (b: Beat) => rank(beat) >= rank(b);
-  return { beat, at };
+  return { beat, at, runKey };
 }

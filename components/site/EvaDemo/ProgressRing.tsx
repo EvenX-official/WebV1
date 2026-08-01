@@ -10,7 +10,10 @@ export function ProgressRing({ value, size = 42 }: { value: number; size?: numbe
 
   const mv = useMotionValue(0);
   useEffect(() => {
-    const controls = animate(mv, value, { duration: 0.7, ease: [0.2, 0.8, 0.2, 1] });
+    const controls = animate(mv, value, {
+      duration: value === 0 ? 0.3 : 0.7,
+      ease: [0.2, 0.8, 0.2, 1],
+    });
     return () => controls.stop();
   }, [value, mv]);
   const offset = useTransform(mv, (v) => c - (v / 100) * c);

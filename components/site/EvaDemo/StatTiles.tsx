@@ -21,8 +21,15 @@ function CountUp({
 }) {
   const mv = useMotionValue(reduced ? to : 0);
   useEffect(() => {
-    if (!active) return;
-    const c = animate(mv, to, { duration: reduced ? 0 : 0.9, ease: EASE });
+    if (reduced) {
+      mv.set(to);
+      return;
+    }
+    if (!active) {
+      mv.set(0);
+      return;
+    }
+    const c = animate(mv, to, { duration: 0.9, ease: EASE });
     return () => c.stop();
   }, [active, to, mv, reduced]);
   const rounded = useTransform(mv, (v) =>

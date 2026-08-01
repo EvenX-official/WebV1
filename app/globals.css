@@ -20,21 +20,38 @@ html, body {
 
 ::selection { background: rgba(37, 99, 235, 0.18); }
 
-/* Signature amber "pencil" underline used in the existing site */
+/* Signature brand underline — EvenX blue */
 .brand-underline {
   background-image: linear-gradient(
     to right,
     transparent 0,
     transparent 2%,
-    #F5B547 4%,
-    #F5B547 96%,
+    #2563EB 4%,
+    #2563EB 96%,
     transparent 98%,
     transparent 100%
   );
   background-repeat: no-repeat;
   background-position: 0 92%;
-  background-size: 100% 0.28em;
+  background-size: 100% 0.16em;
   padding-bottom: 0.06em;
+}
+
+/* Subtle grid behind the hero product mock — slow drift, low contrast */
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgba(37, 99, 235, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(37, 99, 235, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+  animation: hero-grid-drift 22s linear infinite;
+}
+@keyframes hero-grid-drift {
+  from { background-position: 0 0, 0 0; }
+  to   { background-position: 44px 44px, 44px 44px; }
+}
+.hero-grid-mask {
+  -webkit-mask-image: radial-gradient(60% 70% at 50% 40%, black, transparent 75%);
+          mask-image: radial-gradient(60% 70% at 50% 40%, black, transparent 75%);
 }
 
 /* Aurora bloom used behind the Eva card, kept subtle */

@@ -21,21 +21,23 @@ const STATUS: Record<Beat, string> = {
   ready: "Plan ready · 34 tasks · 7 vendors · 1 flag",
 };
 
-function useTypedPrompt(active: boolean, reduced: boolean) {
+function useTypedPrompt(active: boolean, reduced: boolean, runKey: number) {
   const [text, setText] = useState(reduced ? PROMPT : "");
   useEffect(() => {
-    if (reduced || !active) {
-      setText(reduced ? PROMPT : "");
+    if (reduced) {
+      setText(PROMPT);
       return;
     }
+    setText("");
+    if (!active) return;
     let i = 0;
     const id = setInterval(() => {
       i += 2;
       setText(PROMPT.slice(0, i));
       if (i >= PROMPT.length) clearInterval(id);
-    }, 32);
+    }, 34);
     return () => clearInterval(id);
-  }, [active, reduced]);
+  }, [active, reduced, runKey]);
   return text;
 }
 
@@ -43,12 +45,14 @@ export function EvaCard({
   beat,
   at,
   reduced,
+  runKey,
 }: {
   beat: Beat;
   at: (b: Beat) => boolean;
   reduced: boolean;
+  runKey: number;
 }) {
-  const typed = useTypedPrompt(at("typing"), reduced);
+  const typed = useTypedPrompt(at("typing"), reduced, runKey);
   const status = STATUS[beat];
   const thinking = beat !== "idle" && beat !== "typing" && beat !== "ready";
 

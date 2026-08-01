@@ -3,8 +3,9 @@ import { Logo } from "./Logo";
 import { Button } from "@/components/ui/Button";
 
 const items = [
-  { label: "Product", href: "#product" },
+  { label: "Platform", href: "#product" },
   { label: "Eva", href: "#eva" },
+  { label: "Solutions", href: "#modules" },
   { label: "Pricing", href: "#pricing" },
   { label: "About", href: "#about" },
 ];

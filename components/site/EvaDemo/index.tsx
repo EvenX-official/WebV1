@@ -37,7 +37,7 @@ export function EvaDemo() {
     return () => io.disconnect();
   }, [inView]);
 
-  const { beat, at } = useSequence({ reduced, playKey });
+  const { beat, at, runKey } = useSequence({ reduced, playKey });
 
   return (
     <div ref={rootRef} className="relative">
@@ -45,7 +45,7 @@ export function EvaDemo() {
         <div className="flex">
           <Sidebar />
           <div className="flex-1 min-w-0 bg-surface-muted/40 p-3 md:p-4 space-y-2.5">
-            <EvaCard beat={beat} at={at} reduced={reduced} />
+            <EvaCard beat={beat} at={at} reduced={reduced} runKey={runKey} />
             <EventCard at={at} reduced={reduced} />
             <TimelineBar at={at} reduced={reduced} />
             <StatTiles at={at} reduced={reduced} />

@@ -1,22 +1,63 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Sparkles, ArrowRight, PlayCircle } from "lucide-react";
+import { useRef, useEffect } from "react";
 import { Button } from "@/components/ui/Button";
-import { Badge } from "@/components/ui/Badge";
 import { EvaDemo } from "./EvaDemo";
 import { fadeUp, stagger, EASE } from "@/lib/motion";
 
-export function Hero() {
+/** Cursor-tracking glow behind the product mock. Subtle. Skipped on touch. */
+function CursorGlow({ target }: { target: React.RefObject<HTMLDivElement | null> }) {
+  const x = useMotionValue(0.5);
+  const y = useMotionValue(0.4);
+  const sx = useSpring(x, { stiffness: 120, damping: 20 });
+  const sy = useSpring(y, { stiffness: 120, damping: 20 });
+  const bg = useTransform(
+    [sx, sy],
+    ([nx, ny]: number[]) =>
+      `radial-gradient(360px 260px at ${nx * 100}% ${ny * 100}%, rgba(37,99,235,0.18), transparent 70%), radial-gradient(300px 220px at ${(1 - nx) * 100}% ${ny * 100}%, rgba(124,92,250,0.12), transparent 70%)`,
+  );
+
+  useEffect(() => {
+    const el = target.current;
+    if (!el) return;
+    if (window.matchMedia("(pointer: coarse)").matches) return;
+    const onMove = (e: PointerEvent) => {
+      const r = el.getBoundingClientRect();
+      x.set((e.clientX - r.left) / r.width);
+      y.set((e.clientY - r.top) / r.height);
+    };
+    el.addEventListener("pointermove", onMove);
+    return () => el.removeEventListener("pointermove", onMove);
+  }, [target, x, y]);
+
   return (
-    <section className="relative overflow-hidden">
-      {/* Soft ambient wash — light and cool, not a rainbow */}
+    <motion.div
+      aria-hidden
+      style={{ background: bg }}
+      className="pointer-events-none absolute inset-0 -z-10"
+    />
+  );
+}
+
+export function Hero() {
+  const heroRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <section ref={heroRef} className="relative overflow-hidden">
+      {/* Ambient wash — cool, restrained */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-[-10%] h-[520px]
-                   bg-[radial-gradient(60%_50%_at_50%_0%,rgba(37,99,235,0.08),transparent_70%),radial-gradient(40%_40%_at_80%_10%,rgba(124,92,250,0.07),transparent_70%)]"
+        className="pointer-events-none absolute inset-x-0 top-[-10%] h-[560px]
+                   bg-[radial-gradient(60%_50%_at_50%_0%,rgba(37,99,235,0.09),transparent_70%),radial-gradient(40%_40%_at_82%_10%,rgba(124,92,250,0.06),transparent_70%)]"
       />
-      <div className="relative mx-auto max-w-[1200px] px-5 md:px-8 pt-14 md:pt-20 pb-24 md:pb-32">
+      {/* Slow drifting grid */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 hero-grid hero-grid-mask" />
+      {/* Cursor glow */}
+      <CursorGlow target={heroRef} />
+
+      <div className="relative mx-auto max-w-[1200px] px-5 md:px-8 pt-16 md:pt-24 pb-24 md:pb-32">
         <motion.div
           initial="hidden"
           animate="show"
@@ -24,15 +65,9 @@ export function Hero() {
           className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center"
         >
           <div className="lg:col-span-5 lg:pr-4">
-            <motion.div variants={fadeUp(0)}>
-              <Badge tone="green" dot>
-                Now in pilot with select event teams
-              </Badge>
-            </motion.div>
-
             <motion.h1
               variants={fadeUp(0.05)}
-              className="mt-6 font-display text-[44px] leading-[1.02] tracking-tightest sm:text-[56px] md:text-[64px] lg:text-[68px] font-semibold text-content-strong"
+              className="font-display text-[44px] leading-[1.02] tracking-tightest sm:text-[56px] md:text-[64px] lg:text-[68px] font-semibold text-content-strong"
             >
               The <span className="brand-underline">intelligent</span> workspace
               <br className="hidden md:inline" /> for corporate events.
@@ -46,8 +81,8 @@ export function Hero() {
               workspace. Describe your event. Eva builds the plan — your team runs it.
             </motion.p>
 
-            <motion.div variants={fadeUp(0.15)} className="mt-8 flex flex-wrap items-center gap-3">
-              <Button size="lg">
+            <motion.div variants={fadeUp(0.15)} className="mt-9 flex flex-wrap items-center gap-3">
+              <Button size="xl">
                 Book a demo <ArrowRight className="h-4 w-4" />
               </Button>
               <Button size="lg" variant="outline">
