@@ -26,7 +26,7 @@ export function TimelinePanel() {
   ];
   return (
     <div className="p-5">
-      <PanelHeader title="Two-day summit timeline" meta="14 – 15 October" />
+      <PanelHeader title="Two-day summit timeline" meta="14 to 15 October" />
       <div className="space-y-2.5">
         {["Day 1 · Wed", "Day 2 · Thu"].map((day, di) => (
           <div key={day}>
@@ -122,7 +122,7 @@ export function BudgetPanel() {
 
 export function TasksPanel() {
   const tasks = [
-    { t: "Confirm venue — The Shard", done: true, o: "HM" },
+    { t: "Confirm venue at The Shard", done: true, o: "HM" },
     { t: "Draft keynote agenda", done: true, o: "SR" },
     { t: "Shortlist catering vendors", done: false, o: "LK" },
     { t: "Book AV walkthrough", done: false, o: "TM", flag: true },

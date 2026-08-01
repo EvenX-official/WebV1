@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "EvenX — The Event Operating System",
+  title: "EvenX. The Event Operating System",
   description:
     "Plan, coordinate and execute corporate events from one intelligent workspace. EvenX orchestrates the entire event around your team.",
 };

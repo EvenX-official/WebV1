@@ -9,7 +9,7 @@ const LINES = [
   "Reconciling vendor quotes across four categories…",
   "Flagging catering cost 12% over benchmark",
   "Rescheduling AV walkthrough to avoid the keynote conflict",
-  "Drafting sponsor update — ready for your review",
+  "Drafting sponsor update, ready for your review",
   "All good. Nothing else needs you right now.",
 ];
 
@@ -49,7 +49,7 @@ export function EvaExperience() {
           Not a chatbot.<br className="hidden sm:inline" /> The <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-purple">operator</span> behind your event.
         </h2>
         <p className="mt-5 text-[16px] leading-[1.6] text-content-onDark-muted max-w-[620px] mx-auto">
-          Eva watches every surface of your event workspace and works ahead of your team —
+          Eva watches every surface of your event workspace and works ahead of your team,
           reconciling budgets, chasing vendors, flagging risks, drafting communications.
           Your team stays in control. Eva keeps things moving.
         </p>

@@ -78,7 +78,7 @@ export function Hero() {
               className="mt-6 max-w-[520px] text-[17px] leading-[1.55] text-content-muted"
             >
               EvenX orchestrates planning, coordination and delivery from a single
-              workspace. Describe your event. Eva builds the plan — your team runs it.
+              workspace. Describe your event. Eva builds the plan. Your team runs it.
             </motion.p>
 
             <motion.div variants={fadeUp(0.15)} className="mt-9 flex flex-wrap items-center gap-3">
@@ -95,7 +95,7 @@ export function Hero() {
               className="mt-6 flex items-center gap-2 text-xs text-content-subtle"
             >
               <Sparkles className="h-3.5 w-3.5 text-brand-blue" />
-              Live demo — watch Eva plan a summit in real time.
+              Live demo. Watch Eva plan a summit in real time.
             </motion.p>
           </div>
 

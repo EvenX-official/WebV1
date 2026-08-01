@@ -93,7 +93,7 @@ const OLD: OldCard[] = [
   },
   {
     icon: MessageCircle,
-    title: "Summit — WhatsApp",
+    title: "Summit chat",
     meta: "38 unread",
     tone: "text-emerald-700 bg-emerald-50",
     top: 82,
@@ -174,7 +174,7 @@ const OLD: OldCard[] = [
   },
   {
     icon: ListTodo,
-    title: "Tasks — Trello board",
+    title: "Tasks on Trello board",
     meta: "18 cards · 6 overdue",
     tone: "text-sky-700 bg-sky-50",
     top: 268,
@@ -329,7 +329,7 @@ function EvenXWay({ reduced }: { reduced: boolean }) {
           Eva · orchestrating your event
         </div>
         <p className="relative mt-1.5 text-[12.5px] leading-snug text-content-onDark-muted">
-          Plan, tasks, vendors, budget and comms — one workspace, kept live as
+          Plan, tasks, vendors, budget and comms. One workspace, kept live as
           your team works.
         </p>
       </div>
@@ -415,7 +415,7 @@ export function Contrast() {
           <br className="hidden md:inline" /> EvenX collapses them into one.
         </>
       }
-      intro="Spreadsheets, inboxes, chat threads, decks, docs — event teams spend more time reconciling tools than running the event. EvenX replaces the stack with a workspace built for how events actually run."
+      intro="Spreadsheets, inboxes, chat threads, decks, docs. Event teams spend more time reconciling tools than running the event. EvenX replaces the stack with a workspace built for how events actually run."
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-4 items-stretch">
         <div className="lg:col-span-5">

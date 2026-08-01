@@ -6,7 +6,7 @@ import { EASE } from "@/lib/motion";
 import type { Beat } from "./useSequence";
 
 const TASKS = [
-  { title: "Confirm venue — The Shard", done: true, owner: "HM" },
+  { title: "Confirm venue at The Shard", done: true, owner: "HM" },
   { title: "Draft agenda · day 1 keynote", done: true, owner: "SR" },
   { title: "Shortlist catering vendors", done: false, owner: "LK" },
   { title: "Book AV walkthrough", done: false, owner: "TM", flagged: true },

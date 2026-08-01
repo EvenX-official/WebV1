@@ -32,7 +32,7 @@ export function TimelineBar({
         <span className="text-[11px] font-semibold uppercase tracking-wide text-content-subtle">
           Timeline
         </span>
-        <span className="text-[10px] text-content-subtle">14 – 15 Oct</span>
+        <span className="text-[10px] text-content-subtle">14 to 15 Oct</span>
       </div>
       <div className="flex flex-col gap-2">
         {["Day 1", "Day 2"].map((day, di) => (

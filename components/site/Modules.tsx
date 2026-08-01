@@ -111,7 +111,7 @@ const CommsViz = () => (
   <div className="space-y-1.5">
     {[
       { who: "Eva", tone: "bg-ink-900 text-content-onDark", text: "Drafted invite for 350 attendees" },
-      { who: "Sarah", tone: "bg-surface-muted text-content-strong", text: "Approved — send Thursday" },
+      { who: "Sarah", tone: "bg-surface-muted text-content-strong", text: "Approved. Send Thursday" },
     ].map((m, i) => (
       <motion.div
         key={i}
@@ -178,7 +178,7 @@ const AnalyticsViz = () => {
 };
 
 const MODULES: Module[] = [
-  { icon: CalendarClock, title: "Timeline that self-heals", copy: "Push a phase — every downstream task re-flows. No stale plans.", metric: "22", metricLabel: "dependencies resolved", visual: <TimelineViz /> },
+  { icon: CalendarClock, title: "Timeline that self-heals", copy: "Push a phase and every downstream task re-flows. No stale plans.", metric: "22", metricLabel: "dependencies resolved", visual: <TimelineViz /> },
   { icon: Wallet, title: "Budget in real time", copy: "POs, quotes and contracts land in the right line. Variance flagged instantly.", metric: "£4.2k", metricLabel: "under plan today", visual: <BudgetViz /> },
   { icon: CheckSquare, title: "Tasks with an owner", copy: "Eva generates the plan, assigns owners and follows up so nothing goes cold.", metric: "34", metricLabel: "tasks · 7 owners", visual: <TaskViz /> },
   { icon: Store, title: "Vendors, ranked and replied", copy: "Send an RFP, triage responses, and shortlist without a spreadsheet.", metric: "7", metricLabel: "vendors shortlisted", visual: <VendorViz /> },
@@ -192,7 +192,7 @@ export function Modules() {
       id="modules"
       eyebrow="Every layer, animated"
       title="A workspace made of surfaces built for events."
-      intro="Timeline, budget, tasks, vendors, comms and reports — each purpose-built, all connected, all kept alive by Eva."
+      intro="Timeline, budget, tasks, vendors, comms and reports. Each purpose-built, all connected, all kept alive by Eva."
     >
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {MODULES.map((m, i) => (
