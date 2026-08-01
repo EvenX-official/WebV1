@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Sparkles, ArrowRight, PlayCircle } from "lucide-react";
+import { ArrowRight, PlayCircle } from "lucide-react";
 import { useRef, useEffect } from "react";
 import { Button } from "@/components/ui/Button";
 import { EvaDemo } from "./EvaDemo";
@@ -89,14 +89,6 @@ export function Hero() {
                 <PlayCircle className="h-4 w-4" /> Watch how it works
               </Button>
             </motion.div>
-
-            <motion.p
-              variants={fadeUp(0.2)}
-              className="mt-6 flex items-center gap-2 text-xs text-content-subtle"
-            >
-              <Sparkles className="h-3.5 w-3.5 text-brand-blue" />
-              Live demo. Watch Eva plan a summit in real time.
-            </motion.p>
           </div>
 
           <motion.div
