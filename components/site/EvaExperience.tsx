@@ -41,7 +41,7 @@ const ACTIVITIES: { category: Category; text: string; hint?: string }[] = [
 ];
 
 /** How long each activity stays before the next appears. */
-const ACTIVITY_MS = 2600;
+const ACTIVITY_MS = 4200;
 
 function useActivityCarousel(active: boolean, reduced: boolean) {
   const [idx, setIdx] = useState(0);
@@ -92,7 +92,7 @@ function InsightTile({
   const [step, setStep] = useState(0);
   useEffect(() => {
     if (!active || reduced) return;
-    const id = setInterval(() => setStep((s) => (s + 1) % targets.length), 4200);
+    const id = setInterval(() => setStep((s) => (s + 1) % targets.length), 6500);
     return () => clearInterval(id);
   }, [active, reduced, targets.length]);
   const target = targets[step];
@@ -232,7 +232,7 @@ export function EvaExperience() {
                         <div className="flex items-center gap-2 text-[10px] text-content-onDark-muted">
                           <span className="font-semibold uppercase tracking-wide">{meta.label}</span>
                           <span className="opacity-60">
-                            {a.age === 0 ? "just now" : `${a.age * 3}s ago`}
+                            {a.age === 0 ? "just now" : `${a.age * 4}s ago`}
                           </span>
                         </div>
                         <div className="mt-0.5 text-[13px] text-content-onDark leading-snug">
