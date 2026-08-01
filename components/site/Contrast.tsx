@@ -10,6 +10,10 @@ import {
   ArrowRight,
   CheckCircle2,
   AlertCircle,
+  Hash,
+  Calendar,
+  Folder,
+  ListTodo,
 } from "lucide-react";
 import { Section } from "./Section";
 import { EASE, useReducedMotion } from "@/lib/motion";
@@ -24,11 +28,14 @@ type OldCard = {
   title: string;
   meta: string;
   tone: string;
-  y: number;
-  x: number;
+  /** absolute placement inside the panel, as percentages so cards fill full width */
+  top: number;
+  left: number;
+  width: number;
   rotate: number;
   badge?: React.ReactNode;
   ping?: "red" | "amber";
+  compact?: boolean;
 };
 
 function LiveCounter({ from, to, interval = 1600 }: { from: number; to: number; interval?: number }) {
@@ -55,11 +62,12 @@ const OLD: OldCard[] = [
   {
     icon: FileSpreadsheet,
     title: "Master Plan v14.xlsx",
-    meta: "Edited by 4 people · conflict",
+    meta: "Edited by 4 people",
     tone: "text-emerald-700 bg-emerald-50",
-    y: 8,
-    x: -18,
-    rotate: -4,
+    top: 12,
+    left: 2,
+    width: 50,
+    rotate: -3,
     badge: (
       <span className="inline-flex items-center gap-1 rounded-full bg-red-50 text-red-600 px-1.5 py-0.5 text-[9px] font-medium">
         <AlertCircle className="h-2.5 w-2.5" /> conflict
@@ -69,25 +77,28 @@ const OLD: OldCard[] = [
   },
   {
     icon: Mail,
-    title: "Re: Re: catering follow-up",
+    title: "Re: Re: catering",
     meta: "12 replies · 3 attachments",
     tone: "text-brand-blue bg-brand-blue-soft",
-    y: 84,
-    x: 40,
+    top: 0,
+    left: 50,
+    width: 48,
     rotate: 3,
     badge: (
       <span className="rounded-full bg-red-500 text-white text-[9px] font-semibold h-4 min-w-[16px] px-1 grid place-items-center">
         <LiveCounter from={12} to={16} interval={1400} />
       </span>
     ),
+    compact: true,
   },
   {
     icon: MessageCircle,
     title: "Summit — WhatsApp",
-    meta: "unread messages",
+    meta: "38 unread",
     tone: "text-emerald-700 bg-emerald-50",
-    y: 160,
-    x: -36,
+    top: 82,
+    left: 0,
+    width: 48,
     rotate: -2,
     badge: (
       <span className="rounded-full bg-emerald-500 text-white text-[9px] font-semibold h-4 min-w-[16px] px-1 grid place-items-center">
@@ -95,27 +106,95 @@ const OLD: OldCard[] = [
       </span>
     ),
     ping: "amber",
+    compact: true,
+  },
+  {
+    icon: Hash,
+    title: "#summit-planning",
+    meta: "6 threads active",
+    tone: "text-violet-700 bg-brand-purple-soft",
+    top: 96,
+    left: 50,
+    width: 47,
+    rotate: 2,
+    badge: (
+      <span className="rounded-full bg-red-500 text-white text-[9px] font-semibold h-4 min-w-[16px] px-1 grid place-items-center">
+        <LiveCounter from={4} to={9} interval={1800} />
+      </span>
+    ),
+    compact: true,
   },
   {
     icon: FileText,
     title: "Vendor brief FINAL_v3.docx",
     meta: "Shared 8 days ago",
     tone: "text-amber-700 bg-amber-50",
-    y: 236,
-    x: 22,
+    top: 172,
+    left: 4,
+    width: 50,
     rotate: 4,
     badge: (
       <span className="rounded-full bg-amber-100 text-amber-700 text-[9px] font-medium px-1.5 py-0.5">
         outdated
       </span>
     ),
+    compact: true,
+  },
+  {
+    icon: Calendar,
+    title: "Site visit · Thu 3pm",
+    meta: "3 conflicting invites",
+    tone: "text-rose-700 bg-rose-50",
+    top: 184,
+    left: 52,
+    width: 46,
+    rotate: -3,
+    badge: (
+      <span className="rounded-full bg-red-50 text-red-600 text-[9px] font-medium px-1.5 py-0.5">
+        conflict
+      </span>
+    ),
+    compact: true,
+  },
+  {
+    icon: Folder,
+    title: "/Summit Assets 2026",
+    meta: "42 files · unsorted",
+    tone: "text-blue-700 bg-blue-50",
+    top: 258,
+    left: 1,
+    width: 48,
+    rotate: 2,
+    badge: (
+      <span className="rounded-full bg-surface-subtle text-content-muted text-[9px] font-medium px-1.5 py-0.5">
+        4 dupes
+      </span>
+    ),
+    compact: true,
+  },
+  {
+    icon: ListTodo,
+    title: "Tasks — Trello board",
+    meta: "18 cards · 6 overdue",
+    tone: "text-sky-700 bg-sky-50",
+    top: 268,
+    left: 51,
+    width: 47,
+    rotate: -2,
+    badge: (
+      <span className="rounded-full bg-amber-100 text-amber-700 text-[9px] font-medium px-1.5 py-0.5">
+        6 overdue
+      </span>
+    ),
+    ping: "red",
+    compact: true,
   },
 ];
 
 function OldWay({ reduced }: { reduced: boolean }) {
   return (
-    <div className="relative h-[340px] rounded-2xl bg-surface-muted/70 border border-surface-border overflow-hidden">
-      {/* subtle noise / grid so the panel doesn't read blank */}
+    <div className="relative h-[360px] rounded-2xl bg-surface-muted/70 border border-surface-border overflow-hidden">
+      {/* subtle grid so the panel doesn't read blank */}
       <div
         aria-hidden
         className="absolute inset-0 opacity-[0.5]"
@@ -125,50 +204,54 @@ function OldWay({ reduced }: { reduced: boolean }) {
           backgroundSize: "22px 22px",
         }}
       />
-      {OLD.map((c, i) => (
-        <motion.div
-          key={c.title}
-          initial={reduced ? false : { opacity: 0, y: c.y + 12, rotate: c.rotate, x: c.x }}
-          whileInView={{ opacity: 1, y: c.y, rotate: c.rotate, x: c.x }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.5, ease: EASE, delay: 0.08 * i }}
-          className="absolute left-1/2 top-2 w-[248px] -translate-x-1/2"
-        >
+      <div className="absolute inset-3">
+        {OLD.map((c, i) => (
           <motion.div
-            animate={
-              reduced
-                ? undefined
-                : { y: [0, -3, 0], rotate: [0, 0.6, 0] }
-            }
-            transition={{
-              duration: 3.4 + i * 0.4,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 0.3,
-            }}
-            className="rounded-xl border border-surface-border bg-white shadow-card px-3 py-2.5 flex items-center gap-3"
+            key={c.title}
+            initial={reduced ? false : { opacity: 0, y: 8, rotate: c.rotate }}
+            whileInView={{ opacity: 1, y: 0, rotate: c.rotate }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.45, ease: EASE, delay: 0.05 * i }}
+            style={{ top: c.top, left: `${c.left}%`, width: `${c.width}%` }}
+            className="absolute"
           >
-            <div className={`relative h-8 w-8 rounded-lg grid place-items-center ${c.tone}`}>
-              <c.icon className="h-4 w-4" />
-              {c.ping && !reduced && (
-                <span className="absolute -top-0.5 -right-0.5">
-                  <Ping tone={c.ping} />
-                </span>
-              )}
-            </div>
-            <div className="min-w-0 flex-1">
-              <div className="text-[13px] font-medium text-content-strong truncate">
-                {c.title}
+            <motion.div
+              animate={
+                reduced
+                  ? undefined
+                  : { y: [0, -3, 0], rotate: [0, 0.5, 0] }
+              }
+              transition={{
+                duration: 3.6 + i * 0.35,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 0.25,
+              }}
+              className={`rounded-xl border border-surface-border bg-white shadow-card flex items-center gap-2.5 ${c.compact ? "px-2.5 py-2" : "px-3 py-2.5"}`}
+            >
+              <div className={`relative h-7 w-7 shrink-0 rounded-lg grid place-items-center ${c.tone}`}>
+                <c.icon className="h-3.5 w-3.5" />
+                {c.ping && !reduced && (
+                  <span className="absolute -top-0.5 -right-0.5">
+                    <Ping tone={c.ping} />
+                  </span>
+                )}
               </div>
-              <div className="text-[11px] text-content-subtle truncate">{c.meta}</div>
-            </div>
-            {c.badge && <div className="shrink-0">{c.badge}</div>}
+              <div className="min-w-0 flex-1">
+                <div className="text-[12px] font-medium text-content-strong truncate leading-tight">
+                  {c.title}
+                </div>
+                <div className="text-[10px] text-content-subtle truncate leading-tight mt-0.5">
+                  {c.meta}
+                </div>
+              </div>
+              {c.badge && <div className="shrink-0">{c.badge}</div>}
+            </motion.div>
           </motion.div>
-        </motion.div>
-      ))}
-      {/* soft top + bottom fade so cards feel like a stack, not a stage */}
-      <div className="absolute inset-x-0 top-0 h-8 bg-gradient-to-b from-surface-muted/70 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-surface-muted/70 to-transparent" />
+        ))}
+      </div>
+      <div className="absolute inset-x-0 top-0 h-6 bg-gradient-to-b from-surface-muted/80 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-surface-muted/80 to-transparent" />
     </div>
   );
 }
@@ -201,7 +284,7 @@ function EvenXWay({ reduced }: { reduced: boolean }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.55, ease: EASE, delay: 0.2 }}
-      className="relative h-[340px] rounded-2xl border border-surface-border bg-white shadow-card px-5 py-4 overflow-hidden"
+      className="relative h-[360px] rounded-2xl border border-surface-border bg-white shadow-card px-5 py-4 overflow-hidden"
     >
       {/* subtle brand wash */}
       <div
