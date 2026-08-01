@@ -69,7 +69,7 @@ export function Hero() {
               variants={fadeUp(0.05)}
               className="font-display text-[44px] leading-[1.02] tracking-tightest sm:text-[56px] md:text-[64px] lg:text-[68px] font-semibold text-content-strong"
             >
-              The <span className="brand-underline">execution</span> workspace
+              The execution workspace
               <br className="hidden md:inline" /> for corporate events.
             </motion.h1>
 
