@@ -22,21 +22,21 @@ export type Beat =
 
 const SCHEDULE: { beat: Beat; at: number }[] = [
   { beat: "idle", at: 0 },
-  { beat: "typing", at: 250 },
-  { beat: "analysing", at: 2600 },
-  { beat: "structure", at: 3400 },
-  { beat: "timeline", at: 4200 },
-  { beat: "budget", at: 5100 },
-  { beat: "tasks", at: 6000 },
-  { beat: "vendors", at: 7000 },
-  { beat: "risks", at: 7900 },
-  { beat: "ready", at: 8800 },
+  { beat: "typing", at: 300 },
+  { beat: "analysing", at: 2900 },
+  { beat: "structure", at: 3900 },
+  { beat: "timeline", at: 5100 },
+  { beat: "budget", at: 6500 },
+  { beat: "tasks", at: 8000 },
+  { beat: "vendors", at: 9500 },
+  { beat: "risks", at: 10900 },
+  { beat: "ready", at: 12200 },
 ];
 
 /** Time held on the final "ready" state before the sequence resets. */
-const HOLD_MS = 4200;
+const HOLD_MS = 5000;
 /** Fade-out gap after HOLD; also the moment `beat` returns to `idle`. */
-const RESET_MS = 450;
+const RESET_MS = 500;
 
 const ORDER: Beat[] = SCHEDULE.map((s) => s.beat);
 const rank = (b: Beat) => ORDER.indexOf(b);

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { RotateCcw } from "lucide-react";
 import { useReducedMotion } from "@/lib/motion";
 import { AppFrame } from "./AppFrame";
 import { Sidebar } from "./Sidebar";
@@ -18,7 +17,6 @@ export function EvaDemo() {
   const [inView, setInView] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
 
-  // Start the sequence the first time the demo scrolls into view.
   useEffect(() => {
     const el = rootRef.current;
     if (!el) return;
@@ -53,17 +51,6 @@ export function EvaDemo() {
           </div>
         </div>
       </AppFrame>
-
-      {/* Replay control — small, unobtrusive, honours reduced motion */}
-      {!reduced && (
-        <button
-          onClick={() => setPlayKey((k) => k + 1)}
-          className="absolute -bottom-3 right-4 inline-flex items-center gap-1.5 rounded-full border border-surface-border bg-white px-3 py-1.5 text-[11px] font-medium text-content-muted shadow-card hover:text-content-strong transition-colors"
-          aria-label="Replay demo"
-        >
-          <RotateCcw className="h-3 w-3" /> Replay
-        </button>
-      )}
     </div>
   );
 }
