@@ -5,10 +5,10 @@ const cols: { heading: string; links: { l: string; h: string }[] }[] = [
   {
     heading: "Product",
     links: [
-      { l: "Workspace", h: "#product" },
-      { l: "Eva", h: "#eva" },
-      { l: "Modules", h: "#modules" },
-      { l: "Pricing", h: "#pricing" },
+      { l: "Workspace", h: "/#product" },
+      { l: "Eva", h: "/#eva" },
+      { l: "Modules", h: "/#modules" },
+      { l: "Pricing", h: "/pricing" },
     ],
   },
   {

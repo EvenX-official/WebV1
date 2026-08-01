@@ -3,11 +3,11 @@ import { Logo } from "./Logo";
 import { Button } from "@/components/ui/Button";
 
 const items = [
-  { label: "Platform", href: "#product" },
-  { label: "Eva", href: "#eva" },
-  { label: "Solutions", href: "#modules" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "About", href: "#about" },
+  { label: "Platform", href: "/#product" },
+  { label: "Eva", href: "/#eva" },
+  { label: "Solutions", href: "/#modules" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "About", href: "/#about" },
 ];
 
 export function Nav() {
