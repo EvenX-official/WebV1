@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ease-brand: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur-fast: 180ms;
+  --dur-base: 320ms;
+  --dur-slow: 640ms;
+  color-scheme: light;
+}
+
+html, body {
+  background: #ffffff;
+  color: #0B0F17;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: rgba(37, 99, 235, 0.18); }
+
+/* Signature amber "pencil" underline used in the existing site */
+.brand-underline {
+  background-image: linear-gradient(
+    to right,
+    transparent 0,
+    transparent 2%,
+    #F5B547 4%,
+    #F5B547 96%,
+    transparent 98%,
+    transparent 100%
+  );
+  background-repeat: no-repeat;
+  background-position: 0 92%;
+  background-size: 100% 0.28em;
+  padding-bottom: 0.06em;
+}
+
+/* Aurora bloom used behind the Eva card, kept subtle */
+.eva-aurora::before {
+  content: "";
+  position: absolute;
+  inset: -30% -20% -10% -20%;
+  background:
+    radial-gradient(60% 50% at 30% 40%, rgba(124, 92, 250, 0.35), transparent 70%),
+    radial-gradient(50% 40% at 80% 20%, rgba(37, 99, 235, 0.35), transparent 70%);
+  filter: blur(30px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Hairline grid used inside the Eva "dark island" for depth */
+.ink-grid {
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
