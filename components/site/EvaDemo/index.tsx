@@ -41,7 +41,7 @@ export function EvaDemo() {
     <div ref={rootRef} className="relative">
       <AppFrame className="min-h-[520px]">
         <div className="flex">
-          <Sidebar />
+          <Sidebar at={at} />
           <div className="flex-1 min-w-0 bg-surface-muted/40 p-3 md:p-4 space-y-2.5">
             <EvaCard beat={beat} at={at} reduced={reduced} runKey={runKey} />
             <EventCard at={at} reduced={reduced} />
