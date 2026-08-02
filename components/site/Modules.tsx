@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import {
   CalendarClock,
   Wallet,
@@ -10,7 +11,7 @@ import {
   BarChart3,
 } from "lucide-react";
 import { Section } from "./Section";
-import { EASE } from "@/lib/motion";
+import { EASE, useReducedMotion } from "@/lib/motion";
 
 type Module = {
   icon: typeof Wallet;
@@ -107,26 +108,84 @@ const VendorViz = () => (
   </div>
 );
 
-const CommsViz = () => (
-  <div className="space-y-1.5">
-    {[
-      { who: "Eva", tone: "bg-ink-900 text-content-onDark", text: "Drafted invite for 350 attendees" },
-      { who: "Sarah", tone: "bg-surface-muted text-content-strong", text: "Approved. Send Thursday" },
-    ].map((m, i) => (
-      <motion.div
-        key={i}
-        initial={{ opacity: 0, y: 4 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.28, ease: EASE, delay: 0.1 * i }}
-        className={`rounded-lg px-2.5 py-1.5 text-[11px] ${m.tone} max-w-[85%] ${i === 1 ? "ml-auto" : ""}`}
-      >
-        <div className="text-[9px] opacity-60 mb-0.5">{m.who}</div>
-        {m.text}
-      </motion.div>
-    ))}
-  </div>
-);
+/** Live team-comms feed for the sampled Leadership Summit 2026 event. */
+type Msg = {
+  who: string;
+  side: "eva" | "team";
+  text: string;
+};
+const MESSAGES: Msg[] = [
+  { who: "Eva",    side: "eva",  text: "Drafted invite for 350 attendees. Ready to send Thursday." },
+  { who: "Sarah",  side: "team", text: "Approved. Let's go." },
+  { who: "Eva",    side: "eva",  text: "Sponsor update drafted. 428 words, warm tone." },
+  { who: "Marcus", side: "team", text: "Add the venue photo?" },
+  { who: "Eva",    side: "eva",  text: "Updated with The Shard hero shot. Ready to review." },
+  { who: "Sarah",  side: "team", text: "Perfect. Send it." },
+  { who: "Eva",    side: "eva",  text: "Drafting speaker confirmation for Prof. Chen…" },
+];
+
+const CommsViz = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { amount: 0.5 });
+  const reduced = useReducedMotion();
+  const [idx, setIdx] = useState(1);
+
+  useEffect(() => {
+    if (!inView || reduced) return;
+    const id = setInterval(() => setIdx((i) => (i + 1) % MESSAGES.length), 2400);
+    return () => clearInterval(id);
+  }, [inView, reduced]);
+
+  // Show the two most recent messages: current + previous.
+  const visible = [0, 1].map((offset) => {
+    const i = (idx - offset + MESSAGES.length * 4) % MESSAGES.length;
+    return { ...MESSAGES[i], age: offset, key: `${idx}-${offset}` };
+  });
+
+  return (
+    <div ref={ref} className="w-full">
+      <div className="flex items-center justify-between text-[9px] text-content-subtle mb-1.5 px-0.5">
+        <span className="font-medium">#leadership-summit-2026</span>
+        <span className="flex items-center gap-1">
+          <span className="h-1 w-1 rounded-full bg-emerald-500" />
+          live
+        </span>
+      </div>
+      <div className="space-y-1 relative">
+        <AnimatePresence initial={false}>
+          {visible
+            .slice()
+            .reverse()
+            .map((m) => {
+              const isEva = m.side === "eva";
+              return (
+                <motion.div
+                  key={m.key}
+                  layout
+                  initial={reduced ? false : { opacity: 0, y: 6, filter: "blur(3px)" }}
+                  animate={{
+                    opacity: m.age === 0 ? 1 : 0.55,
+                    y: 0,
+                    filter: "blur(0px)",
+                  }}
+                  exit={reduced ? undefined : { opacity: 0, y: -4, filter: "blur(3px)" }}
+                  transition={{ duration: 0.32, ease: EASE }}
+                  className={`rounded-lg px-2 py-1 text-[10.5px] leading-snug max-w-[86%] ${
+                    isEva
+                      ? "bg-ink-900 text-content-onDark"
+                      : "bg-surface-muted text-content-strong ml-auto"
+                  }`}
+                >
+                  <div className="text-[9px] opacity-60 mb-0.5">{m.who}</div>
+                  {m.text}
+                </motion.div>
+              );
+            })}
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+};
 
 const AnalyticsViz = () => {
   const points = [10, 24, 18, 34, 40, 52, 68];
