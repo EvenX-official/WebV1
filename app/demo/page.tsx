@@ -143,7 +143,7 @@ const PERKS = [
   {
     icon: Handshake,
     title: "Start in days, not weeks",
-    body: "Your first two months are complimentary. We set everything up with you, no long procurement, no IT dependency. You are live with a real event in 48 hours.",
+    body: "Your first 2 months are complimentary. We set everything up with you — no long procurement, no IT dependency. Log in today, run your first event same week. No training required, no IT team needed.",
   },
   {
     icon: Trophy,
