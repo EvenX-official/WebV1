@@ -24,7 +24,7 @@ const cols: { heading: string; links: { l: string; h: string }[] }[] = [
     links: [
       { l: "Privacy", h: "#privacy" },
       { l: "Terms", h: "#terms" },
-      { l: "Security", h: "#security" },
+      { l: "Security", h: "/security" },
     ],
   },
 ];
