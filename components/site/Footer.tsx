@@ -14,7 +14,7 @@ const cols: { heading: string; links: { l: string; h: string }[] }[] = [
   {
     heading: "Company",
     links: [
-      { l: "About", h: "/#about" },
+      { l: "About", h: "/about" },
       { l: "Careers", h: "/careers" },
       { l: "Contact", h: "/contact" },
     ],
