@@ -24,7 +24,7 @@ const values = [
   {
     icon: Users,
     title: "One team, one room",
-    body: "We work together in London. Being in the room together is how we ship fast and keep the craft bar high.",
+    body: "We work together in Leeds. Being in the room together is how we ship fast and keep the craft bar high.",
   },
   {
     icon: HeartHandshake,
@@ -133,7 +133,7 @@ export default function CareersPage() {
               <ul className="mt-6 space-y-2 text-[13.5px] text-content-muted">
                 <li>· One thoughtful paragraph beats a five-page CV</li>
                 <li>· A link to something you've shipped or built helps</li>
-                <li>· We're based in London and work together in person</li>
+                <li>· We're based in Leeds and work together in person</li>
               </ul>
             </div>
             <div className="lg:col-span-7">
