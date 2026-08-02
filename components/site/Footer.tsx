@@ -24,6 +24,7 @@ const cols: { heading: string; links: { l: string; h: string }[] }[] = [
     links: [
       { l: "Privacy", h: "/privacy" },
       { l: "Terms", h: "/terms" },
+      { l: "Cookie Policy", h: "/cookie-policy" },
       { l: "Security", h: "/security" },
     ],
   },
@@ -58,9 +59,11 @@ export function Footer() {
             </div>
           ))}
         </div>
-        <div className="mt-12 pt-6 border-t border-surface-border/70 flex flex-wrap items-center justify-between gap-3 text-[12px] text-content-subtle">
-          <span>© {new Date().getFullYear()} EvenX. All rights reserved.</span>
-          <span>Made for corporate event teams.</span>
+        <div className="mt-12 pt-6 border-t border-surface-border/70 flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-[12px] text-content-subtle">
+          <span>© {new Date().getFullYear()} EvenX Ltd. All rights reserved.</span>
+          <span>
+            EvenX Ltd · Company No. 16776145 (England &amp; Wales) · ICO No. ZC170755
+          </span>
         </div>
       </div>
     </footer>
