@@ -3,6 +3,7 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowRight, PlayCircle } from "lucide-react";
 import { useRef, useEffect } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { EvaDemo } from "./EvaDemo";
 import { fadeUp, stagger, EASE } from "@/lib/motion";
@@ -82,12 +83,16 @@ export function Hero() {
             </motion.p>
 
             <motion.div variants={fadeUp(0.15)} className="mt-9 flex flex-wrap items-center gap-3">
-              <Button size="xl">
-                Book a demo <ArrowRight className="h-4 w-4" />
-              </Button>
-              <Button size="lg" variant="outline">
-                <PlayCircle className="h-4 w-4" /> Watch how it works
-              </Button>
+              <Link href="/demo">
+                <Button size="xl">
+                  Book a demo <ArrowRight className="h-4 w-4" />
+                </Button>
+              </Link>
+              <Link href="#eva">
+                <Button size="lg" variant="outline">
+                  <PlayCircle className="h-4 w-4" /> Watch how it works
+                </Button>
+              </Link>
             </motion.div>
           </div>
 

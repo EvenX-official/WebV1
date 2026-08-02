@@ -35,7 +35,9 @@ export function Nav() {
           >
             Log in
           </Link>
-          <Button size="md">Book a demo</Button>
+          <Link href="/demo">
+            <Button size="md">Book a demo</Button>
+          </Link>
         </div>
       </div>
     </header>

@@ -209,15 +209,17 @@ export function PricingCards() {
               </div>
 
               <div className="mt-6">
-                {p.featured ? (
-                  <Button className="w-full" size="lg">
-                    {p.cta} <ArrowRight className="h-4 w-4" />
-                  </Button>
-                ) : (
-                  <Button className="w-full" size="lg" variant="outline">
-                    {p.cta}
-                  </Button>
-                )}
+                <a href="/demo" className="block">
+                  {p.featured ? (
+                    <Button className="w-full" size="lg">
+                      {p.cta} <ArrowRight className="h-4 w-4" />
+                    </Button>
+                  ) : (
+                    <Button className="w-full" size="lg" variant="outline">
+                      {p.cta}
+                    </Button>
+                  )}
+                </a>
               </div>
 
               <div className="mt-6 rounded-xl border border-surface-border bg-surface-muted/50 p-4">

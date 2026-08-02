@@ -25,9 +25,11 @@ export function CTA() {
             Book a 20-minute walkthrough with our team. See Eva plan a real event in your own workspace.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Button size="lg">Book a demo <ArrowRight className="h-4 w-4" /></Button>
+            <Link href="/demo">
+              <Button size="lg">Book a demo <ArrowRight className="h-4 w-4" /></Button>
+            </Link>
             <Link
-              href="#eva"
+              href="/#eva"
               className="inline-flex items-center gap-2 h-12 px-4 text-[15px] text-content-muted hover:text-content transition-colors"
             >
               <PlayCircle className="h-4 w-4" /> Watch the 90-second tour
