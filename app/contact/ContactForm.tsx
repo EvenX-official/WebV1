@@ -27,7 +27,7 @@ export function ContactForm() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <Field label="Your name">
-          <Input name="name" required autoComplete="name" placeholder="Halm Murungi" />
+          <Input name="name" required autoComplete="name" placeholder="Your full name" />
         </Field>
         <Field label="Work email">
           <Input
