@@ -14,16 +14,16 @@ const cols: { heading: string; links: { l: string; h: string }[] }[] = [
   {
     heading: "Company",
     links: [
-      { l: "About", h: "#about" },
-      { l: "Careers", h: "#careers" },
-      { l: "Contact", h: "#contact" },
+      { l: "About", h: "/#about" },
+      { l: "Careers", h: "/careers" },
+      { l: "Contact", h: "/contact" },
     ],
   },
   {
     heading: "Legal",
     links: [
-      { l: "Privacy", h: "#privacy" },
-      { l: "Terms", h: "#terms" },
+      { l: "Privacy", h: "/privacy" },
+      { l: "Terms", h: "/terms" },
       { l: "Security", h: "/security" },
     ],
   },

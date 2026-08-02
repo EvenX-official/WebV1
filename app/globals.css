@@ -77,6 +77,36 @@ html, body {
   background-size: 44px 44px;
 }
 
+/* Typography for long-form legal pages */
+.prose-legal p,
+.prose-legal li {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #4A5262;
+}
+.prose-legal ul { list-style: none; padding-left: 0; }
+.prose-legal li { position: relative; padding-left: 1.1em; }
+.prose-legal li::before {
+  content: "";
+  position: absolute;
+  left: 0.15em;
+  top: 0.7em;
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: #B0B7C4;
+}
+.prose-legal strong { color: #0B0F17; font-weight: 600; }
+.prose-legal a { color: #1D4FD8; text-underline-offset: 3px; }
+.prose-legal a:hover { text-decoration: underline; }
+.prose-legal h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0B0F17;
+  margin-top: 1.2em;
+  margin-bottom: 0.4em;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
 }

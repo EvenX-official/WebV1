@@ -7,7 +7,8 @@ const items = [
   { label: "Eva", href: "/#eva" },
   { label: "Solutions", href: "/#modules" },
   { label: "Pricing", href: "/pricing" },
-  { label: "About", href: "/#about" },
+  { label: "Careers", href: "/careers" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function Nav() {
