@@ -132,7 +132,7 @@ const AnalyticsViz = () => {
   const points = [10, 24, 18, 34, 40, 52, 68];
   const max = 70;
   return (
-    <svg viewBox="0 0 200 80" className="w-full h-24">
+    <svg viewBox="0 0 200 80" preserveAspectRatio="none" className="w-full h-16 sm:h-20">
       <defs>
         <linearGradient id="ana" x1="0" x2="0" y1="0" y2="1">
           <stop offset="0%" stopColor="#2563EB" stopOpacity="0.3" />
@@ -154,6 +154,7 @@ const AnalyticsViz = () => {
         }
         stroke="#2563EB"
         strokeWidth="2"
+        vectorEffect="non-scaling-stroke"
         fill="none"
         strokeLinecap="round"
       />

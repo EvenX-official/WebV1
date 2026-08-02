@@ -28,12 +28,12 @@ export function CTA() {
             <Link href="/demo">
               <Button size="lg">Book a demo <ArrowRight className="h-4 w-4" /></Button>
             </Link>
-            <Link
+            <a
               href="/#eva"
               className="inline-flex items-center gap-2 h-12 px-4 text-[15px] text-content-muted hover:text-content transition-colors"
             >
               <PlayCircle className="h-4 w-4" /> Watch the 90-second tour
-            </Link>
+            </a>
           </div>
           <p className="mt-6 text-[12px] text-content-subtle">
             No credit card. Live pilot with real event data.
