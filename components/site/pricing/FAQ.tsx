@@ -37,7 +37,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Do you integrate with our existing tools?",
-    a: "EvenX connects with Google Workspace, Microsoft 365, Slack, Teams, and calendar systems out of the box. Core and Pro plans include integrations with accounting, procurement and CRM systems. Custom integrations are available on Pro.",
+    a: "Native integrations with Google Workspace, Microsoft 365, Slack, Teams, calendars, and common accounting, procurement and CRM systems are on our roadmap and will ship with the Pro plan. In the meantime, EvenX works alongside your current stack and we can advise on the best interim workflow for your team.",
   },
   {
     q: "What happens if we exceed a plan limit?",
