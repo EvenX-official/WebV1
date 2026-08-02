@@ -1,6 +1,6 @@
 "use server";
 
-import { sendMail, esc } from "@/lib/email";
+import { forwardLead } from "@/lib/email";
 
 export type FormState = { ok: boolean; message: string } | null;
 
@@ -39,36 +39,24 @@ export async function submitDemo(_prev: FormState, formData: FormData): Promise<
     return { ok: false, message: "Please keep your note under 4,000 characters." };
   }
 
-  const html = `
-    <div style="font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#0B0F17;line-height:1.55">
-      <h2 style="margin:0 0 12px;font-size:16px">New demo request</h2>
-      <table style="border-collapse:collapse;font-size:14px">
-        <tr><td style="padding:4px 12px 4px 0;color:#727A88">Name</td><td>${esc(name)}</td></tr>
-        <tr><td style="padding:4px 12px 4px 0;color:#727A88">Email</td><td><a href="mailto:${esc(email)}">${esc(email)}</a></td></tr>
-        <tr><td style="padding:4px 12px 4px 0;color:#727A88">Company</td><td>${esc(company)}</td></tr>
-        ${role ? `<tr><td style="padding:4px 12px 4px 0;color:#727A88">Role</td><td>${esc(role)}</td></tr>` : ""}
-        ${size ? `<tr><td style="padding:4px 12px 4px 0;color:#727A88">Company size</td><td>${esc(size)}</td></tr>` : ""}
-        ${events ? `<tr><td style="padding:4px 12px 4px 0;color:#727A88">Events per year</td><td>${esc(events)}</td></tr>` : ""}
-        ${timeframe ? `<tr><td style="padding:4px 12px 4px 0;color:#727A88">Preferred time</td><td>${esc(timeframe)}</td></tr>` : ""}
-      </table>
-      ${message ? `<hr style="border:none;border-top:1px solid #E6E8EE;margin:16px 0" /><div style="white-space:pre-wrap;font-size:14px">${esc(message)}</div>` : ""}
-    </div>`;
-
   try {
-    await sendMail({
-      subject: `Demo request · ${company} · ${name}`,
-      replyTo: email,
-      html,
+    await forwardLead({
+      kind: "pilot",
+      name, email, company,
+      fields: {
+        ...(role ? { Role: role } : {}),
+        ...(size ? { "Company size": size } : {}),
+        ...(events ? { "Events per year": events } : {}),
+        ...(timeframe ? { "Preferred time": timeframe } : {}),
+        ...(message ? { Message: message } : {}),
+        Source: "Book a demo",
+      },
     });
     return {
       ok: true,
       message: "Thanks. We'll be in touch within one business day to confirm a time.",
     };
-  } catch (err) {
-    const m = err instanceof Error ? err.message : "";
-    if (m === "EMAIL_NOT_CONFIGURED") {
-      return { ok: false, message: "Demo requests aren't wired up yet. Please email info@evenx.co.uk directly." };
-    }
+  } catch {
     return { ok: false, message: "Something went wrong. Please email info@evenx.co.uk directly." };
   }
 }

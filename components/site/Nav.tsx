@@ -30,7 +30,7 @@ export function Nav() {
         </nav>
         <div className="flex items-center gap-2">
           <Link
-            href="#login"
+            href="https://app.evenx.co.uk/login"
             className="hidden md:inline text-sm text-content-muted hover:text-content px-3"
           >
             Log in

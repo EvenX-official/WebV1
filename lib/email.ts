@@ -50,3 +50,28 @@ export function esc(v: unknown): string {
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
 }
+
+// ─── EvenX platform lead pipeline ────────────────────────────────────────────
+// Wired 2 Aug (call spec G2): leads land in the app's admin Leads page and the
+// platform emails both sides. Replaces the direct Resend send, which was
+// unconfigured on this project and would have failed every submission.
+const LEAD_ENDPOINT = "https://app.evenx.co.uk/api/website-lead";
+
+export async function forwardLead(payload: {
+  kind: "pilot" | "contact";
+  name: string;
+  email: string;
+  company?: string;
+  fields?: Record<string, string>;
+}): Promise<void> {
+  const res = await fetch(LEAD_ENDPOINT, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ ...payload, website: "" }),
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    const body = await res.text().catch(() => "");
+    throw new Error(`LEAD_ERROR:${res.status}:${body.slice(0, 120)}`);
+  }
+}
