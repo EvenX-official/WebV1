@@ -202,7 +202,7 @@ export function VendorsPanel() {
 
 export function ApprovalsPanel() {
   const items = [
-    { t: "Approve budget: Sales Training", meta: "Requested by Halm · Due soon", state: "pending" },
+    { t: "Approve budget: Sales Training", meta: "Requested by Sarah · Due soon", state: "pending" },
     { t: "Sign: Elite Events Catering", meta: "Contract · £52,000", state: "pending" },
     { t: "Review change: Annual All-Hands", meta: "Venue moved to 15 Sept", state: "approved" },
     { t: "Confirm: Hilton Leeds Conference", meta: "Sales Training · 15 Sept", state: "approved" },
