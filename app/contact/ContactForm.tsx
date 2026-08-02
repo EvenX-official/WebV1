@@ -35,7 +35,7 @@ export function ContactForm() {
             type="email"
             required
             autoComplete="email"
-            placeholder="halm@company.com"
+            placeholder="you@company.com"
           />
         </Field>
       </div>
