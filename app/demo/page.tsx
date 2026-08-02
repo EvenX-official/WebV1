@@ -123,7 +123,7 @@ const PERKS = [
   {
     icon: TagIcon,
     title: "Founding pricing, locked",
-    body: "50% off for your first 12 months, and a price that never rises for as long as you stay with us. Grandfathered through every future plan change.",
+    body: "30% off your first year, applied automatically when you convert from your free trial. Standard pricing applies from year two. No hidden fees, no surprises.",
   },
   {
     icon: Route,
@@ -142,8 +142,8 @@ const PERKS = [
   },
   {
     icon: Handshake,
-    title: "Extended pilot terms",
-    body: "Three months to prove value with your real events. Cancel any time in that window, keep every export you've made. No commitments.",
+    title: "Start in days, not weeks",
+    body: "Your first two months are complimentary. We set everything up with you, no long procurement, no IT dependency. You are live with a real event in 48 hours.",
   },
   {
     icon: Trophy,
