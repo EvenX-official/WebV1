@@ -68,8 +68,8 @@ export default function ContactPage() {
                 <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-content-subtle">
                   <MapPin className="h-3.5 w-3.5 text-brand-blue" /> Where we're based
                 </div>
-                <div className="mt-2 text-[14px] text-content-strong">United Kingdom</div>
-                <p className="mt-1 text-[13px] text-content-muted">Remote-first, UK-hosted.</p>
+                <div className="mt-2 text-[14px] text-content-strong">London, United Kingdom</div>
+                <p className="mt-1 text-[13px] text-content-muted">UK-based team, UK-hosted platform.</p>
               </div>
             </div>
 

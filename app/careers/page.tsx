@@ -23,8 +23,8 @@ const values = [
   },
   {
     icon: Users,
-    title: "Remote-first, UK-hosted",
-    body: "Work from anywhere in compatible time zones. We meet in person a few times a year and hire wherever the best people are.",
+    title: "One team, one room",
+    body: "We work together in London. Being in the room together is how we ship fast and keep the craft bar high.",
   },
   {
     icon: HeartHandshake,
@@ -34,10 +34,10 @@ const values = [
 ];
 
 const openings = [
-  { role: "Founding Engineer", team: "Engineering",     location: "London / Remote UK" },
-  { role: "Product Designer",  team: "Product & Design", location: "London / Remote UK" },
-  { role: "Growth Lead",       team: "Marketing",        location: "London / Remote UK" },
-  { role: "Account Executive", team: "Sales",            location: "London / Remote UK" },
+  { role: "Founding Engineer", team: "Engineering",     location: "London" },
+  { role: "Product Designer",  team: "Product & Design", location: "London" },
+  { role: "Growth Lead",       team: "Marketing",        location: "London" },
+  { role: "Account Executive", team: "Sales",            location: "London" },
 ];
 
 export default function CareersPage() {
@@ -135,7 +135,7 @@ export default function CareersPage() {
               <ul className="mt-6 space-y-2 text-[13.5px] text-content-muted">
                 <li>· One thoughtful paragraph beats a five-page CV</li>
                 <li>· A link to something you've shipped or built helps</li>
-                <li>· We hire remote across compatible time zones</li>
+                <li>· We're based in London and work together in person</li>
               </ul>
             </div>
             <div className="lg:col-span-7">

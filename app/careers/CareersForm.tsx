@@ -55,7 +55,7 @@ export function CareersForm() {
           </Select>
         </Field>
         <Field label="Location" optional>
-          <Input name="location" placeholder="London / Remote UK / …" />
+          <Input name="location" placeholder="London" />
         </Field>
       </div>
 
