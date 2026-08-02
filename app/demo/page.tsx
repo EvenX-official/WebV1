@@ -184,8 +184,8 @@ function FoundingPartners() {
             Come with us early. Get more than a discount.
           </h2>
           <p className="mt-5 text-[16px] leading-[1.6] text-content-onDark-muted max-w-[620px]">
-            We are taking on a small group of founding partners this year — teams who will help
-            shape EvenX and will be shaped, in return, by the terms below.
+            We are taking on a small group of founding partners before launch, teams who will
+            help shape EvenX and will be shaped, in return, by the terms below.
           </p>
         </div>
 
