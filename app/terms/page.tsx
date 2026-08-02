@@ -116,7 +116,7 @@ export default function TermsPage() {
 
       <LegalSection id="content" index={7} title="Your content">
         <p>
-          You retain ownership of everything you put into EvenX — event plans, files, vendor
+          You retain ownership of everything you put into EvenX, including event plans, files, vendor
           details, budgets, messages and so on ("Customer Content"). You grant us a limited,
           non-exclusive licence to host, process and display your content solely to provide the
           service to you and your team.

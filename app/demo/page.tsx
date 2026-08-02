@@ -133,7 +133,7 @@ const PERKS = [
   {
     icon: MessageSquareHeart,
     title: "A private line to the team",
-    body: "Shared channel with the founders, product and engineering. Not a support queue — actual conversations, same day.",
+    body: "Shared channel with the founders, product and engineering. Not a support queue. Actual conversations, same day.",
   },
   {
     icon: Rocket,
@@ -143,7 +143,7 @@ const PERKS = [
   {
     icon: Handshake,
     title: "Start in days, not weeks",
-    body: "Your first 2 months are complimentary. We set everything up with you — no long procurement, no IT dependency. Log in today, run your first event same week. No training required, no IT team needed.",
+    body: "Your first 2 months are complimentary. We set everything up with you. No long procurement, no IT dependency. Log in today, run your first event same week. No training required, no IT team needed.",
   },
   {
     icon: Trophy,
@@ -217,7 +217,7 @@ function FoundingPartners() {
               A small number of founding partners for the 2026 cohort.
             </div>
             <div className="mt-1 text-[13px] text-content-onDark-muted">
-              Book a demo above and mention <em>founding partner</em> in your note — we'll take it
+              Book a demo above and mention <em>founding partner</em> in your note. We'll take it
               from there.
             </div>
           </div>

@@ -21,7 +21,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "How does Eva, the AI event planner, work?",
-    a: "Eva is built into EvenX and does not require a separate subscription. She reads your event brief, builds the plan, generates the timeline and budget, drafts tasks and communications, and flags risks as your team works. Every action Eva takes is reviewable, reversible and traceable — your team stays in control.",
+    a: "Eva is built into EvenX and does not require a separate subscription. She reads your event brief, builds the plan, generates the timeline and budget, drafts tasks and communications, and flags risks as your team works. Every action Eva takes is reviewable, reversible and traceable. Your team stays in control.",
   },
   {
     q: "Do you offer annual discounts?",
@@ -29,7 +29,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Can we invite external stakeholders and vendors?",
-    a: "Yes. Vendors, sponsors, venues and external stakeholders can be invited into scoped workspaces with view or comment access — they do not count toward your team member limit. Core and Pro plans include richer vendor lifecycle tools.",
+    a: "Yes. Vendors, sponsors, venues and external stakeholders can be invited into scoped workspaces with view or comment access, and they do not count toward your team member limit. Core and Pro plans include richer vendor lifecycle tools.",
   },
   {
     q: "How is our data protected?",

@@ -8,8 +8,8 @@ import { Field, Input, Textarea, Select } from "@/components/ui/Field";
 import { Button } from "@/components/ui/Button";
 import { EASE } from "@/lib/motion";
 
-const SIZES = ["1–10", "11–50", "51–200", "201–500", "501–1,000", "1,000+"];
-const EVENTS = ["1–5", "6–15", "16–50", "50+"];
+const SIZES = ["1 to 10", "11 to 50", "51 to 200", "201 to 500", "501 to 1,000", "1,000+"];
+const EVENTS = ["1 to 5", "6 to 15", "16 to 50", "50+"];
 const TIMES = ["This week", "Next week", "In the next 2 weeks", "Flexible"];
 
 export function DemoForm() {

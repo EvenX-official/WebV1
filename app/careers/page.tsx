@@ -7,7 +7,7 @@ import { CareersForm } from "./CareersForm";
 export const metadata: Metadata = {
   title: "Careers. EvenX",
   description:
-    "Come build EvenX — the Event Operating System for corporate teams. We're hiring across engineering, product, sales, marketing and operations.",
+    "Come build EvenX, the Event Operating System for corporate teams. We're hiring across engineering, product, sales, marketing and operations.",
 };
 
 const values = [
@@ -29,7 +29,7 @@ const values = [
   {
     icon: HeartHandshake,
     title: "Craft matters",
-    body: "We hold the bar high on product, design and code. Speed doesn't excuse sloppiness — the two compound each other.",
+    body: "We hold the bar high on product, design and code. Speed doesn't excuse sloppiness. The two compound each other.",
   },
 ];
 
@@ -126,7 +126,7 @@ export default function CareersPage() {
                 Apply to join the team
               </h2>
               <p className="mt-3 text-[15px] leading-[1.6] text-content-muted">
-                Don't see a title that matches? Apply anyway — pick the department that fits best
+                Don't see a title that matches? Apply anyway. Pick the department that fits best
                 and tell us what you'd want to build. We read every application and reply within a
                 week.
               </p>

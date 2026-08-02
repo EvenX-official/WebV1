@@ -4,8 +4,8 @@ import { sendMail, esc } from "@/lib/email";
 
 export type FormState = { ok: boolean; message: string } | null;
 
-const COMPANY_SIZES = ["1–10", "11–50", "51–200", "201–500", "501–1,000", "1,000+"] as const;
-const EVENTS_PER_YEAR = ["1–5", "6–15", "16–50", "50+"] as const;
+const COMPANY_SIZES = ["1 to 10", "11 to 50", "51 to 200", "201 to 500", "501 to 1,000", "1,000+"] as const;
+const EVENTS_PER_YEAR = ["1 to 5", "6 to 15", "16 to 50", "50+"] as const;
 const TIMEFRAMES = ["This week", "Next week", "In the next 2 weeks", "Flexible"] as const;
 
 export async function submitDemo(_prev: FormState, formData: FormData): Promise<FormState> {
