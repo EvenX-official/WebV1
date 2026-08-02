@@ -66,16 +66,19 @@ const TEAM: Person[] = [
     name: "Halm Murungi",
     role: "Founder & CEO",
     bio: "Entrepreneur and business leader with over a decade of experience building and scaling businesses across technology, education, travel and professional services. He previously founded a business that was successfully acquired and later led high-performing regional operations across multiple markets. Halm founded EvenX after experiencing first-hand the challenges of coordinating events across fragmented tools, teams, vendors and workflows.",
+    image: "/team/halm.jpg",
   },
   {
     name: "Phiona Murungi",
     role: "Operations and Events Coordination",
     bio: "Phiona has extensive experience coordinating events, managing stakeholders, and ensuring smooth operational delivery across a variety of functions. Her background includes event planning, logistics coordination, customer engagement, scheduling and vendor management. At EvenX, she helps shape the customer experience and operational workflows, ensuring the platform reflects the realities of how events are planned and executed in practice.",
+    image: "/team/phiona.png",
   },
   {
     name: "Neils van Elteren",
     role: "Go-to-market Advisor",
     bio: "Neils advises EvenX on go-to-market strategy, commercial positioning, customer acquisition and growth. He brings experience supporting technology businesses through product launches, market expansion and commercial scaling. His role is focused on helping EvenX refine its market positioning, validate customer demand, and develop a scalable path to adoption and revenue growth.",
+    image: "/team/neils.png",
   },
 ];
 
