@@ -21,6 +21,7 @@ export async function submitApplication(_prev: FormState, formData: FormData): P
   const name = String(formData.get("name") || "").trim();
   const email = String(formData.get("email") || "").trim();
   const department = String(formData.get("department") || "").trim();
+  const location = String(formData.get("location") || "").trim();
   const link = String(formData.get("link") || "").trim();
   const message = String(formData.get("message") || "").trim();
 
@@ -50,6 +51,7 @@ export async function submitApplication(_prev: FormState, formData: FormData): P
         <tr><td style="padding:4px 12px 4px 0;color:#727A88">Name</td><td>${esc(name)}</td></tr>
         <tr><td style="padding:4px 12px 4px 0;color:#727A88">Email</td><td><a href="mailto:${esc(email)}">${esc(email)}</a></td></tr>
         <tr><td style="padding:4px 12px 4px 0;color:#727A88">Department</td><td>${esc(department)}</td></tr>
+        ${location ? `<tr><td style="padding:4px 12px 4px 0;color:#727A88">Location</td><td>${esc(location)}</td></tr>` : ""}
         ${link ? `<tr><td style="padding:4px 12px 4px 0;color:#727A88">CV / LinkedIn</td><td><a href="${esc(link)}">${esc(link)}</a></td></tr>` : ""}
       </table>
       <hr style="border:none;border-top:1px solid #E6E8EE;margin:16px 0" />

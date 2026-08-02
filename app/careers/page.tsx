@@ -34,10 +34,10 @@ const values = [
 ];
 
 const openings = [
-  { role: "Founding Engineer", team: "Engineering",     location: "London" },
-  { role: "Product Designer",  team: "Product & Design", location: "London" },
-  { role: "Growth Lead",       team: "Marketing",        location: "London" },
-  { role: "Account Executive", team: "Sales",            location: "London" },
+  { role: "Founding Engineer", team: "Engineering" },
+  { role: "Product Designer",  team: "Product & Design" },
+  { role: "Growth Lead",       team: "Marketing" },
+  { role: "Account Executive", team: "Sales" },
 ];
 
 export default function CareersPage() {
@@ -104,9 +104,7 @@ export default function CareersPage() {
                 >
                   <div className="flex-1 min-w-0">
                     <div className="text-[15px] font-semibold text-content-strong">{o.role}</div>
-                    <div className="text-[12.5px] text-content-muted">
-                      {o.team} · {o.location}
-                    </div>
+                    <div className="text-[12.5px] text-content-muted">{o.team}</div>
                   </div>
                   <a
                     href="#apply"

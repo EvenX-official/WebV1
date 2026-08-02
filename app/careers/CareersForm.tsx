@@ -41,18 +41,23 @@ export function CareersForm() {
         </Field>
       </div>
 
-      <Field label="Which department?">
-        <Select name="department" required defaultValue="">
-          <option value="" disabled>
-            Pick one
-          </option>
-          {DEPARTMENTS.map((d) => (
-            <option key={d} value={d}>
-              {d}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <Field label="Which department?">
+          <Select name="department" required defaultValue="">
+            <option value="" disabled>
+              Pick one
             </option>
-          ))}
-        </Select>
-      </Field>
+            {DEPARTMENTS.map((d) => (
+              <option key={d} value={d}>
+                {d}
+              </option>
+            ))}
+          </Select>
+        </Field>
+        <Field label="Location" optional>
+          <Input name="location" placeholder="City, country" />
+        </Field>
+      </div>
 
       <Field label="LinkedIn or CV link" optional hint="A public URL is fine.">
         <Input name="link" type="url" placeholder="https://linkedin.com/in/…" />
