@@ -1,5 +1,26 @@
 import Link from "next/link";
+import { Instagram, Facebook, Linkedin } from "lucide-react";
 import { Logo } from "./Logo";
+
+function TikTokIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="currentColor"
+      aria-hidden
+    >
+      <path d="M19.321 5.562a5.122 5.122 0 0 1-3.414-1.28 5.122 5.122 0 0 1-1.7-3.234h-3.28v12.98c0 1.13-.9 2.05-2.03 2.05a2.05 2.05 0 0 1-2.05-2.05c0-1.13.92-2.05 2.05-2.05.21 0 .41.03.6.09v-3.34a5.36 5.36 0 0 0-.6-.04A5.39 5.39 0 0 0 3.5 14.02a5.39 5.39 0 0 0 5.39 5.4 5.39 5.39 0 0 0 5.4-5.4V8.62a8.36 8.36 0 0 0 5.03 1.68V7.02a5.13 5.13 0 0 1-0-.02z" />
+    </svg>
+  );
+}
+
+const socials: { label: string; href: string; Icon: React.ComponentType<{ className?: string }> }[] = [
+  { label: "LinkedIn",  href: "https://www.linkedin.com/company/evenxuk/", Icon: Linkedin },
+  { label: "Instagram", href: "https://www.instagram.com/evenx_official", Icon: Instagram },
+  { label: "TikTok",    href: "https://www.tiktok.com/@evenx_official",   Icon: TikTokIcon },
+  { label: "Facebook",  href: "https://www.facebook.com/share/198hi1eqEn/", Icon: Facebook },
+];
 
 const cols: { heading: string; links: { l: string; h: string }[] }[] = [
   {
@@ -41,6 +62,20 @@ export function Footer() {
               The intelligent workspace for corporate events. Plan, coordinate and deliver from
               one canvas.
             </p>
+            <div className="mt-5 flex items-center gap-2">
+              {socials.map(({ label, href, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="h-8 w-8 grid place-items-center rounded-lg border border-surface-border text-content-muted hover:text-content-strong hover:border-surface-border-strong transition-colors"
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              ))}
+            </div>
           </div>
           {cols.map((c) => (
             <div key={c.heading}>
