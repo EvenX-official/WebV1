@@ -46,10 +46,9 @@ export async function submitApplication(_prev: FormState, formData: FormData): P
 
   try {
     await forwardLead({
-      kind: "contact",
+      kind: "careers",
       name, email,
       fields: {
-        Subject: "Careers application",
         ...(department ? { Department: department } : {}),
         ...(location ? { Location: location } : {}),
         ...(link ? { "CV / LinkedIn": link } : {}),

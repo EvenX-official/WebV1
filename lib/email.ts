@@ -58,7 +58,7 @@ export function esc(v: unknown): string {
 const LEAD_ENDPOINT = "https://app.evenx.co.uk/api/website-lead";
 
 export async function forwardLead(payload: {
-  kind: "pilot" | "contact";
+  kind: "pilot" | "contact" | "careers";
   name: string;
   email: string;
   company?: string;
