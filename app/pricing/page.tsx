@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { PricingCards } from "@/components/site/pricing/PricingCards";
 import { FAQ } from "@/components/site/pricing/FAQ";
 import { CTA } from "@/components/site/CTA";
 
-export const metadata: Metadata = {
-  title: "Pricing. EvenX",
-  description:
-    "Simple pricing. No surprises. Every plan includes two months free. No credit card required to start.",
-};
+export const metadata: Metadata = pageMeta(
+  "Pricing — EvenX Event Operations Platform",
+  "Transparent pricing for event teams of every size. Start free, upgrade when you are ready. No hidden fees.",
+  "/pricing"
+);
 
 export default function PricingPage() {
   return (

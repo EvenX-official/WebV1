@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { Mail, MessageCircle, Building2, MapPin } from "lucide-react";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { ContactForm } from "./ContactForm";
 
-export const metadata: Metadata = {
-  title: "Contact. EvenX",
-  description:
-    "Talk to the EvenX team about pilots, partnerships, security questionnaires, or anything else.",
-};
+export const metadata: Metadata = pageMeta(
+  "Contact EvenX",
+  "Get in touch with the EvenX team. We typically respond within one business day.",
+  "/contact"
+);
 
 export default function ContactPage() {
   return (

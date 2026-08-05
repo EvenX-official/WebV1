@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Image from "next/image";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { CTA } from "@/components/site/CTA";
 import { Badge } from "@/components/ui/Badge";
 
-export const metadata: Metadata = {
-  title: "About. EvenX",
-  description:
-    "Built by people who have been in the room. Meet the team behind EvenX and the story of why we started.",
-};
+export const metadata: Metadata = pageMeta(
+  "About EvenX — Built by Event Operations Professionals",
+  "EvenX was built by people who have run events. We know what the operational layer actually looks like and we built a platform to match it.",
+  "/about"
+);
 
 type Person = {
   name: string;
