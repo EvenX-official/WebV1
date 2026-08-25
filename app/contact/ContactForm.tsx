@@ -15,15 +15,37 @@ export function ContactForm() {
 
   return (
     <form action={action} className="space-y-4">
-      {/* honeypot */}
-      <input
-        type="text"
-        name="website"
-        tabIndex={-1}
-        autoComplete="off"
-        className="hidden"
-        aria-hidden
-      />
+      {/*
+        Honeypot. Real users never see or focus this field.
+        Bots that parse the DOM see a plausible-looking "website" input,
+        fill it in, and their submission is silently accepted server-side
+        (see actions.ts) so they move on and don't retry.
+        We position it off-screen instead of using `display:none` because
+        many modern spam bots skip anything with `display:none` or
+        `visibility:hidden`.
+      */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          left: "-10000px",
+          top: "auto",
+          width: 1,
+          height: 1,
+          overflow: "hidden",
+        }}
+      >
+        <label htmlFor="contact-website">
+          Website (leave this blank)
+          <input
+            id="contact-website"
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </label>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <Field label="Your name">

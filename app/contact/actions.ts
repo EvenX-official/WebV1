@@ -7,8 +7,12 @@ export type FormState = { ok: boolean; message: string } | null;
 const TOPICS = ["General", "Sales", "Support", "Partnership", "Press"] as const;
 
 export async function submitContact(_prev: FormState, formData: FormData): Promise<FormState> {
-  // honeypot — bots will fill this
-  if (String(formData.get("website") || "")) return { ok: true, message: "Thanks." };
+  // Honeypot. If the hidden 'website' field is filled, this is a bot.
+  // Return a fake success so the bot doesn't retry, and never forward
+  // the payload to the lead pipeline.
+  if (String(formData.get("website") || "").trim() !== "") {
+    return { ok: true, message: "Thanks, we'll be in touch within one business day." };
+  }
 
   const name = String(formData.get("name") || "").trim();
   const email = String(formData.get("email") || "").trim();
