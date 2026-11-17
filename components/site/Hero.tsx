@@ -83,9 +83,9 @@ export function Hero() {
             </motion.p>
 
             <motion.div variants={fadeUp(0.15)} className="mt-9 flex flex-wrap items-center gap-3">
-              <Link href="/demo">
+              <Link href="https://app.evenx.co.uk/login">
                 <Button size="xl">
-                  Book a demo <ArrowRight className="h-4 w-4" />
+                  Sign up <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>
               <Link href="#eva">

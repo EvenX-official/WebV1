@@ -22,11 +22,11 @@ export function CTA() {
             Run your next event on <span className="brand-underline">EvenX</span>.
           </h2>
           <p className="mt-4 text-[16px] text-content-muted max-w-[520px] mx-auto">
-            Book a 20-minute walkthrough with our team. See Eva plan a real event in your own workspace.
+            Create your account and let Eva plan your next event in your own workspace.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Link href="/demo">
-              <Button size="lg">Book a demo <ArrowRight className="h-4 w-4" /></Button>
+            <Link href="https://app.evenx.co.uk/login">
+              <Button size="lg">Sign up <ArrowRight className="h-4 w-4" /></Button>
             </Link>
             <a
               href="/#eva"
@@ -36,7 +36,7 @@ export function CTA() {
             </a>
           </div>
           <p className="mt-6 text-[12px] text-content-subtle">
-            No credit card. Live pilot with real event data.
+            No credit card required. Get started in minutes.
           </p>
         </div>
       </div>

@@ -63,8 +63,8 @@ export function Nav() {
             >
               Log in
             </Link>
-            <Link href="/demo" className="hidden md:block">
-              <Button size="md">Book a demo</Button>
+            <Link href="https://app.evenx.co.uk/login" className="hidden md:block">
+              <Button size="md">Sign up</Button>
             </Link>
             {/* Mobile hamburger */}
             <button
@@ -153,9 +153,9 @@ export function Nav() {
                 >
                   Log in
                 </Link>
-                <Link href="/demo" onClick={() => setOpen(false)}>
+                <Link href="https://app.evenx.co.uk/login" onClick={() => setOpen(false)}>
                   <Button size="lg" className="w-full">
-                    Book a demo <ArrowRight className="h-4 w-4" />
+                    Sign up <ArrowRight className="h-4 w-4" />
                   </Button>
                 </Link>
               </div>

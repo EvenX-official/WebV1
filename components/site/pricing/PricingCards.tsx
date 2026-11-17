@@ -209,7 +209,7 @@ export function PricingCards() {
               </div>
 
               <div className="mt-6">
-                <a href="/demo" className="block">
+                <a href="https://app.evenx.co.uk/login" className="block">
                   {p.featured ? (
                     <Button className="w-full" size="lg">
                       {p.cta} <ArrowRight className="h-4 w-4" />
