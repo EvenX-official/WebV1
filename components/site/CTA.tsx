@@ -25,8 +25,8 @@ export function CTA() {
             Create your account and let Eva plan your next event in your own workspace.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Link href="https://app.evenx.co.uk/login">
-              <Button size="lg">Sign up <ArrowRight className="h-4 w-4" /></Button>
+            <Link href="https://app.evenx.co.uk/signup">
+              <Button size="lg">Start free trial <ArrowRight className="h-4 w-4" /></Button>
             </Link>
             <a
               href="/#eva"
