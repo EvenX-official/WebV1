@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Instagram, Facebook, Linkedin } from "lucide-react";
 import { Logo } from "./Logo";
+import { VENDOR_REGISTER_URL, VENDOR_SIGN_IN_URL } from "@/lib/links";
 
 function TikTokIcon({ className = "" }: { className?: string }) {
   return (
@@ -33,6 +34,13 @@ const cols: { heading: string; links: { l: string; h: string }[] }[] = [
     ],
   },
   {
+    heading: "For vendors",
+    links: [
+      { l: "Vendor sign in", h: VENDOR_SIGN_IN_URL },
+      { l: "Register as a vendor", h: VENDOR_REGISTER_URL },
+    ],
+  },
+  {
     heading: "Company",
     links: [
       { l: "About", h: "/about" },
@@ -55,7 +63,7 @@ export function Footer() {
   return (
     <footer className="border-t border-surface-border mt-8">
       <div className="mx-auto max-w-[1200px] px-5 md:px-8 py-14">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-10">
           <div className="col-span-2">
             <Logo />
             <p className="mt-4 text-[13px] text-content-muted max-w-[280px] leading-relaxed">

@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, ChevronDown, LogIn, Store } from "lucide-react";
 import { Logo } from "./Logo";
 import { Button } from "@/components/ui/Button";
 import { EASE } from "@/lib/motion";
+import { VENDOR_REGISTER_URL, VENDOR_SIGN_IN_URL } from "@/lib/links";
 
 const items = [
   { label: "Platform", href: "/#product" },
@@ -15,6 +16,75 @@ const items = [
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
+
+const vendorLinks = [
+  { label: "Vendor sign in", hint: "Go to your vendor workspace", href: VENDOR_SIGN_IN_URL, Icon: LogIn },
+  { label: "Register as a vendor", hint: "List your business on EvenX, free", href: VENDOR_REGISTER_URL, Icon: Store },
+];
+
+/** "For vendors" in the header: sign in or register, in a small menu. */
+function VendorMenu() {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("mousedown", onDown);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  return (
+    <div ref={ref} className="relative hidden md:block">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-controls="vendor-menu"
+        className="inline-flex items-center gap-1 text-sm text-content-muted hover:text-content px-3 transition-colors"
+      >
+        For vendors
+        <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${open ? "rotate-180" : ""}`} aria-hidden />
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            id="vendor-menu"
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.18, ease: EASE }}
+            className="absolute right-0 top-full mt-3 w-[280px] rounded-2xl border border-surface-border bg-white p-2 shadow-card-lg"
+          >
+            {vendorLinks.map(({ label, hint, href, Icon }) => (
+              <a
+                key={href}
+                href={href}
+                onClick={() => setOpen(false)}
+                className="flex items-start gap-3 rounded-xl px-3 py-2.5 hover:bg-surface-muted transition-colors"
+              >
+                <span className="mt-0.5 grid h-8 w-8 flex-none place-items-center rounded-lg bg-brand-blue/10 text-brand-blue" aria-hidden>
+                  <Icon className="h-4 w-4" />
+                </span>
+                <span className="min-w-0">
+                  <span className="block text-sm font-medium text-content-strong">{label}</span>
+                  <span className="block text-[12.5px] text-content-muted">{hint}</span>
+                </span>
+              </a>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
 export function Nav() {
   const [open, setOpen] = useState(false);
@@ -57,6 +127,7 @@ export function Nav() {
             ))}
           </nav>
           <div className="flex items-center gap-2">
+            <VendorMenu />
             <Link
               href="https://app.evenx.co.uk/login"
               className="hidden md:inline text-sm text-content-muted hover:text-content px-3"
@@ -144,6 +215,23 @@ export function Nav() {
                   </motion.li>
                 ))}
               </ul>
+
+              <div className="border-t border-surface-border px-5 pt-4 pb-2">
+                <div className="px-3 pb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-content-subtle">
+                  For vendors
+                </div>
+                {vendorLinks.map(({ label, href, Icon }) => (
+                  <a
+                    key={href}
+                    href={href}
+                    onClick={() => setOpen(false)}
+                    className="flex items-center gap-2.5 px-3 py-2.5 text-[15px] text-content-strong rounded-lg hover:bg-surface-muted transition-colors"
+                  >
+                    <Icon className="h-4 w-4 text-brand-blue" aria-hidden />
+                    {label}
+                  </a>
+                ))}
+              </div>
 
               <div className="border-t border-surface-border px-5 py-4 space-y-3">
                 <Link
